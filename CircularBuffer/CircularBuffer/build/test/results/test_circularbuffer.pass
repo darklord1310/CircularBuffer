@@ -1,0 +1,16 @@
+---
+:source:
+  :path: test
+  :file: test_circularbuffer.c
+:successes:
+- :test: test_circularBufferNew_given_6_should_allocate_CircularBuffer_object_with_a_buffer_of_6
+  :line: 14
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 1
+  :passed: 1
+  :failed: 0
+  :ignored: 0
+:stdout: []
