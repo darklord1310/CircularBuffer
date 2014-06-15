@@ -10,11 +10,14 @@ typedef struct
 	int size;
 	int length;
 	int *buffer;
+	
 }CircularBuffer;
+
 
 CircularBuffer *circularBufferNew(int length);
 void CircularBufferAdd(CircularBuffer *cb, int valueToAdd);
 void circularBufferDel(CircularBuffer *circularBuffer);
+int circularBufferRemove(CircularBuffer *cb);
 
 	
 #endif // circularbuffer_H

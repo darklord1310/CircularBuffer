@@ -6,11 +6,27 @@
 - :test: test_circularBufferNew_given_6_should_allocate_CircularBuffer_object_with_a_buffer_of_6
   :line: 14
   :message: ''
+- :test: test_CircularBufferAdd_given_value_6_should_add_into_the_first_buffer
+  :line: 27
+  :message: ''
+- :test: test_CircularBufferAdd_given_value_7_should_add_into_the_second_buffer
+  :line: 48
+  :message: ''
+- :test: test_CircularBufferAdd_given_value_8_should_add_into_the_third_buffer
+  :line: 73
+  :message: ''
+- :test: test_CircularBufferAdd_given_value_9_should_add_into_the_fourth_buffer
+  :line: 100
+  :message: ''
+- :test: test_CircularBufferAdd_given_buffer_is_full_but_trying_to_add_should_throw_err
+  :line: 128
+  :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 1
-  :passed: 1
+  :total: 6
+  :passed: 6
   :failed: 0
   :ignored: 0
-:stdout: []
+:stdout:
+- Caught an exception
