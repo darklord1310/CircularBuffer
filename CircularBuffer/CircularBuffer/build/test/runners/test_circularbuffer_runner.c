@@ -36,10 +36,13 @@ extern void setUp(void);
 extern void tearDown(void);
 extern void test_circularBufferNew_given_6_should_allocate_CircularBuffer_object_with_a_buffer_of_6(void);
 extern void test_CircularBufferAdd_given_value_6_should_add_into_the_first_buffer(void);
-extern void test_CircularBufferAdd_given_value_7_should_add_into_the_second_buffer(void);
-extern void test_CircularBufferAdd_given_value_8_should_add_into_the_third_buffer(void);
-extern void test_CircularBufferAdd_given_value_9_should_add_into_the_fourth_buffer(void);
-extern void test_CircularBufferAdd_given_buffer_is_full_but_trying_to_add_should_throw_err(void);
+extern void test_CircularBufferAdd_given_6_7_should_get_7_6(void);
+extern void test_CircularBufferAdd_given_6_7_8_should_get_8_7_6(void);
+extern void test_CircularBufferAdd_given_value_6_7_8_9_should_get_9_8_7_6(void);
+extern void test_CircularBufferAdd_given_buffer_is_full_but_trying_to_add_should_throw_ERR_BUFFER_IS_FULL(void);
+extern void test_circularBufferRemove_given_empty_buffer_should_throw_ERR_BUFFER_IS_EMPTY(void);
+extern void test_circularBufferRemove_given_13_should_return_13(void);
+extern void test_circularBufferRemove_given_33_7_should_return_33(void);
 
 
 //=======Test Reset Option=====
@@ -55,12 +58,15 @@ int main(void)
 {
   Unity.TestFile = "test_circularbuffer.c";
   UnityBegin();
-  RUN_TEST(test_circularBufferNew_given_6_should_allocate_CircularBuffer_object_with_a_buffer_of_6, 14);
+  RUN_TEST(test_circularBufferNew_given_6_should_allocate_CircularBuffer_object_with_a_buffer_of_6, 15);
   RUN_TEST(test_CircularBufferAdd_given_value_6_should_add_into_the_first_buffer, 27);
-  RUN_TEST(test_CircularBufferAdd_given_value_7_should_add_into_the_second_buffer, 48);
-  RUN_TEST(test_CircularBufferAdd_given_value_8_should_add_into_the_third_buffer, 73);
-  RUN_TEST(test_CircularBufferAdd_given_value_9_should_add_into_the_fourth_buffer, 100);
-  RUN_TEST(test_CircularBufferAdd_given_buffer_is_full_but_trying_to_add_should_throw_err, 128);
+  RUN_TEST(test_CircularBufferAdd_given_6_7_should_get_7_6, 48);
+  RUN_TEST(test_CircularBufferAdd_given_6_7_8_should_get_8_7_6, 73);
+  RUN_TEST(test_CircularBufferAdd_given_value_6_7_8_9_should_get_9_8_7_6, 102);
+  RUN_TEST(test_CircularBufferAdd_given_buffer_is_full_but_trying_to_add_should_throw_ERR_BUFFER_IS_FULL, 132);
+  RUN_TEST(test_circularBufferRemove_given_empty_buffer_should_throw_ERR_BUFFER_IS_EMPTY, 153);
+  RUN_TEST(test_circularBufferRemove_given_13_should_return_13, 170);
+  RUN_TEST(test_circularBufferRemove_given_33_7_should_return_33, 190);
 
   return (UnityEnd());
 }

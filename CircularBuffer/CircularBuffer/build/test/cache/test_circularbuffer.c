@@ -5,6 +5,8 @@
 
 
 
+
+
 void setUp(void)
 
 {
@@ -25,23 +27,21 @@ void test_circularBufferNew_given_6_should_allocate_CircularBuffer_object_with_a
 
 {
 
- CircularBuffer *cb = circularBufferNew(6);
+ CircularBuffer *cb = circularBufferNew(5);
 
- if ((((cb)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)17);;};
+ if ((((cb)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)18);;};
 
- if ((((cb->buffer)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)18);;};
+ if ((((cb->buffer)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)19);;};
 
- UnityAssertEqualNumber((_U_SINT)((6)), (_U_SINT)((cb->length)), (((void *)0)), (_U_UINT)19, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((cb->length)), (((void *)0)), (_U_UINT)20, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((cb->size)), (((void *)0)), (_U_UINT)20, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((cb->size)), (((void *)0)), (_U_UINT)21, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualNumber((_U_SINT)(_UP)((cb->buffer)), (_U_SINT)(_UP)((cb->head)), (((void *)0)), (_U_UINT)21, UNITY_DISPLAY_STYLE_HEX32);
+ UnityAssertEqualNumber((_U_SINT)(_UP)((cb->buffer)), (_U_SINT)(_UP)((cb->head)), (((void *)0)), (_U_UINT)22, UNITY_DISPLAY_STYLE_HEX32);
 
- UnityAssertEqualNumber((_U_SINT)(_UP)((cb->buffer)), (_U_SINT)(_UP)((cb->tail)), (((void *)0)), (_U_UINT)22, UNITY_DISPLAY_STYLE_HEX32);
+ UnityAssertEqualNumber((_U_SINT)(_UP)((cb->buffer)), (_U_SINT)(_UP)((cb->tail)), (((void *)0)), (_U_UINT)23, UNITY_DISPLAY_STYLE_HEX32);
 
  circularBufferDel(cb);
-
-
 
 }
 
@@ -53,7 +53,7 @@ void test_CircularBufferAdd_given_value_6_should_add_into_the_first_buffer(void)
 
  unsigned int err;
 
- CircularBuffer *cb = circularBufferNew(6);
+ CircularBuffer *cb = circularBufferNew(5);
 
  { jmp_buf *PrevFrame, NewFrame; unsigned int MY_ID = (0); PrevFrame = CExceptionFrames[(0)].pFrame; CExceptionFrames[MY_ID].pFrame = (jmp_buf*)(&NewFrame); CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); if (_setjmp(NewFrame) == 0) { if (&PrevFrame)
 
@@ -61,43 +61,43 @@ void test_CircularBufferAdd_given_value_6_should_add_into_the_first_buffer(void)
 
   CircularBufferAdd(cb,6);
 
+  if ((((cb)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)34);;};
+
+  if ((((cb->buffer)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)35);;};
+
+  UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((cb->length)), (((void *)0)), (_U_UINT)36, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((cb->size)), (((void *)0)), (_U_UINT)37, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((6)), (_U_SINT)((*(cb->head))), (((void *)0)), (_U_UINT)38, UNITY_DISPLAY_STYLE_INT);
+
  }else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { err = CExceptionFrames[MY_ID].Exception; err=err; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A)){
 
 
 
-  UnityAssertEqualNumber((_U_SINT)((ERR_BUFFER_IS_FULL)), (_U_SINT)((err)), (((void *)0)), (_U_UINT)36, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((ERR_BUFFER_IS_FULL)), (_U_SINT)((err)), (((void *)0)), (_U_UINT)41, UNITY_DISPLAY_STYLE_INT);
 
-  UnityFail( ("Do not expect exception to be generated"), (_U_UINT)37);;
+  UnityFail( ("Do not expect exception to be generated"), (_U_UINT)42);;
 
  }
 
-   if ((((cb)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)39);;};
 
- if ((((cb->buffer)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)40);;};
-
- UnityAssertEqualNumber((_U_SINT)((6)), (_U_SINT)((cb->length)), (((void *)0)), (_U_UINT)41, UNITY_DISPLAY_STYLE_INT);
-
- UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((cb->size)), (((void *)0)), (_U_UINT)42, UNITY_DISPLAY_STYLE_INT);
-
- UnityAssertEqualNumber((_U_SINT)((6)), (_U_SINT)((*(cb->head))), (((void *)0)), (_U_UINT)43, UNITY_DISPLAY_STYLE_INT);
 
     circularBufferDel(cb);
-
-
 
 }
 
 
 
-void test_CircularBufferAdd_given_value_7_should_add_into_the_second_buffer(void)
+void test_CircularBufferAdd_given_6_7_should_get_7_6(void)
 
 {
 
  unsigned int err;
 
- CircularBuffer *cb = circularBufferNew(6);
+ CircularBuffer *cb = circularBufferNew(5);
 
- int *temp = cb->buffer;
+
 
  { jmp_buf *PrevFrame, NewFrame; unsigned int MY_ID = (0); PrevFrame = CExceptionFrames[(0)].pFrame; CExceptionFrames[MY_ID].pFrame = (jmp_buf*)(&NewFrame); CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); if (_setjmp(NewFrame) == 0) { if (&PrevFrame)
 
@@ -107,29 +107,29 @@ void test_CircularBufferAdd_given_value_7_should_add_into_the_second_buffer(void
 
   CircularBufferAdd(cb,7);
 
+  if ((((cb)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)57);;};
+
+  if ((((cb->buffer)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)58);;};
+
+  UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((cb->length)), (((void *)0)), (_U_UINT)59, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((cb->size)), (((void *)0)), (_U_UINT)60, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)(_UP)((7)), (_U_SINT)(_UP)((*(cb->head))), (((void *)0)), (_U_UINT)61, UNITY_DISPLAY_STYLE_HEX32);
+
+  UnityAssertEqualNumber((_U_SINT)(_UP)((6)), (_U_SINT)(_UP)((*(cb->tail))), (((void *)0)), (_U_UINT)62, UNITY_DISPLAY_STYLE_HEX32);
+
  }else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { err = CExceptionFrames[MY_ID].Exception; err=err; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A)){
 
 
 
-  UnityAssertEqualNumber((_U_SINT)((ERR_BUFFER_IS_FULL)), (_U_SINT)((err)), (((void *)0)), (_U_UINT)59, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((ERR_BUFFER_IS_FULL)), (_U_SINT)((err)), (((void *)0)), (_U_UINT)65, UNITY_DISPLAY_STYLE_INT);
 
-  UnityFail( ("Do not expect exception to be generated"), (_U_UINT)60);;
+  UnityFail( ("Do not expect exception to be generated"), (_U_UINT)66);;
 
  }
 
- if ((((cb)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)62);;};
 
- if ((((cb->buffer)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)63);;};
-
- UnityAssertEqualNumber((_U_SINT)((6)), (_U_SINT)((cb->length)), (((void *)0)), (_U_UINT)64, UNITY_DISPLAY_STYLE_INT);
-
- UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((cb->size)), (((void *)0)), (_U_UINT)65, UNITY_DISPLAY_STYLE_INT);
-
- UnityAssertEqualNumber((_U_SINT)((7)), (_U_SINT)((*(temp+1))), (((void *)0)), (_U_UINT)66, UNITY_DISPLAY_STYLE_INT);
-
- UnityAssertEqualNumber((_U_SINT)(_UP)((temp)), (_U_SINT)(_UP)((cb->head)), (((void *)0)), (_U_UINT)67, UNITY_DISPLAY_STYLE_HEX32);
-
- UnityAssertEqualNumber((_U_SINT)(_UP)(((temp+1))), (_U_SINT)(_UP)((cb->tail)), (((void *)0)), (_U_UINT)68, UNITY_DISPLAY_STYLE_HEX32);
 
  circularBufferDel(cb);
 
@@ -139,15 +139,17 @@ void test_CircularBufferAdd_given_value_7_should_add_into_the_second_buffer(void
 
 
 
-void test_CircularBufferAdd_given_value_8_should_add_into_the_third_buffer(void)
+void test_CircularBufferAdd_given_6_7_8_should_get_8_7_6(void)
 
 {
 
  unsigned int err;
 
- CircularBuffer *cb = circularBufferNew(6);
+ CircularBuffer *cb = circularBufferNew(5);
 
  int *temp = cb->buffer;
+
+
 
  { jmp_buf *PrevFrame, NewFrame; unsigned int MY_ID = (0); PrevFrame = CExceptionFrames[(0)].pFrame; CExceptionFrames[MY_ID].pFrame = (jmp_buf*)(&NewFrame); CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); if (_setjmp(NewFrame) == 0) { if (&PrevFrame)
 
@@ -159,29 +161,33 @@ void test_CircularBufferAdd_given_value_8_should_add_into_the_third_buffer(void)
 
   CircularBufferAdd(cb,8);
 
+  if ((((cb)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)84);;};
+
+  if ((((cb->buffer)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)85);;};
+
+  UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((cb->length)), (((void *)0)), (_U_UINT)86, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((3)), (_U_SINT)((cb->size)), (((void *)0)), (_U_UINT)87, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((6)), (_U_SINT)((*(temp))), (((void *)0)), (_U_UINT)88, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((7)), (_U_SINT)((*(temp+1))), (((void *)0)), (_U_UINT)89, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((*(temp+2))), (((void *)0)), (_U_UINT)90, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)(_UP)((8)), (_U_SINT)(_UP)((*(cb->head))), (((void *)0)), (_U_UINT)91, UNITY_DISPLAY_STYLE_HEX32);
+
+  UnityAssertEqualNumber((_U_SINT)(_UP)((6)), (_U_SINT)(_UP)((*(cb->tail))), (((void *)0)), (_U_UINT)92, UNITY_DISPLAY_STYLE_HEX32);
+
  }else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { err = CExceptionFrames[MY_ID].Exception; err=err; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A)){
 
 
 
-  UnityAssertEqualNumber((_U_SINT)((ERR_BUFFER_IS_FULL)), (_U_SINT)((err)), (((void *)0)), (_U_UINT)85, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((ERR_BUFFER_IS_FULL)), (_U_SINT)((err)), (((void *)0)), (_U_UINT)95, UNITY_DISPLAY_STYLE_INT);
 
-  UnityFail( ("Do not expect exception to be generated"), (_U_UINT)86);;
+  UnityFail( ("Do not expect exception to be generated"), (_U_UINT)96);;
 
  }
-
- if ((((cb)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)88);;};
-
- if ((((cb->buffer)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)89);;};
-
- UnityAssertEqualNumber((_U_SINT)((6)), (_U_SINT)((cb->length)), (((void *)0)), (_U_UINT)90, UNITY_DISPLAY_STYLE_INT);
-
- UnityAssertEqualNumber((_U_SINT)((3)), (_U_SINT)((cb->size)), (((void *)0)), (_U_UINT)91, UNITY_DISPLAY_STYLE_INT);
-
- UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((*(temp+2))), (((void *)0)), (_U_UINT)92, UNITY_DISPLAY_STYLE_INT);
-
- UnityAssertEqualNumber((_U_SINT)(_UP)((temp)), (_U_SINT)(_UP)((cb->head)), (((void *)0)), (_U_UINT)93, UNITY_DISPLAY_STYLE_HEX32);
-
- UnityAssertEqualNumber((_U_SINT)(_UP)(((temp+2))), (_U_SINT)(_UP)((cb->tail)), (((void *)0)), (_U_UINT)94, UNITY_DISPLAY_STYLE_HEX32);
 
  circularBufferDel(cb);
 
@@ -191,17 +197,17 @@ void test_CircularBufferAdd_given_value_8_should_add_into_the_third_buffer(void)
 
 
 
-
-
-void test_CircularBufferAdd_given_value_9_should_add_into_the_fourth_buffer(void)
+void test_CircularBufferAdd_given_value_6_7_8_9_should_get_9_8_7_6(void)
 
 {
 
  unsigned int err;
 
- CircularBuffer *cb = circularBufferNew(4);
+ CircularBuffer *cb = circularBufferNew(5);
 
  int *temp = cb->buffer;
+
+
 
  { jmp_buf *PrevFrame, NewFrame; unsigned int MY_ID = (0); PrevFrame = CExceptionFrames[(0)].pFrame; CExceptionFrames[MY_ID].pFrame = (jmp_buf*)(&NewFrame); CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); if (_setjmp(NewFrame) == 0) { if (&PrevFrame)
 
@@ -215,33 +221,35 @@ void test_CircularBufferAdd_given_value_9_should_add_into_the_fourth_buffer(void
 
   CircularBufferAdd(cb,9);
 
+  if ((((cb)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)114);;};
 
+  if ((((cb->buffer)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)115);;};
+
+  UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((cb->length)), (((void *)0)), (_U_UINT)116, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((cb->size)), (((void *)0)), (_U_UINT)117, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((6)), (_U_SINT)((*(temp))), (((void *)0)), (_U_UINT)118, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((7)), (_U_SINT)((*(temp+1))), (((void *)0)), (_U_UINT)119, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((*(temp+2))), (((void *)0)), (_U_UINT)120, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((9)), (_U_SINT)((*(temp+3))), (((void *)0)), (_U_UINT)121, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)(_UP)((9)), (_U_SINT)(_UP)((*(cb->head))), (((void *)0)), (_U_UINT)122, UNITY_DISPLAY_STYLE_HEX32);
+
+  UnityAssertEqualNumber((_U_SINT)(_UP)((6)), (_U_SINT)(_UP)((*(cb->tail))), (((void *)0)), (_U_UINT)123, UNITY_DISPLAY_STYLE_HEX32);
 
  }else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { err = CExceptionFrames[MY_ID].Exception; err=err; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A)){
 
 
 
-  UnityAssertEqualNumber((_U_SINT)((ERR_BUFFER_IS_FULL)), (_U_SINT)((err)), (((void *)0)), (_U_UINT)114, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((ERR_BUFFER_IS_FULL)), (_U_SINT)((err)), (((void *)0)), (_U_UINT)126, UNITY_DISPLAY_STYLE_INT);
 
-  UnityFail( ("Do not expect exception to be generated"), (_U_UINT)115);;
+  UnityFail( ("Do not expect exception to be generated"), (_U_UINT)127);;
 
  }
-
-
-
- if ((((cb)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)118);;};
-
- if ((((cb->buffer)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)119);;};
-
- UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((cb->length)), (((void *)0)), (_U_UINT)120, UNITY_DISPLAY_STYLE_INT);
-
- UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((cb->size)), (((void *)0)), (_U_UINT)121, UNITY_DISPLAY_STYLE_INT);
-
- UnityAssertEqualNumber((_U_SINT)((9)), (_U_SINT)((*(temp+3))), (((void *)0)), (_U_UINT)122, UNITY_DISPLAY_STYLE_INT);
-
- UnityAssertEqualNumber((_U_SINT)(_UP)((temp)), (_U_SINT)(_UP)((cb->head)), (((void *)0)), (_U_UINT)123, UNITY_DISPLAY_STYLE_HEX32);
-
- UnityAssertEqualNumber((_U_SINT)(_UP)(((temp+3))), (_U_SINT)(_UP)((cb->tail)), (((void *)0)), (_U_UINT)124, UNITY_DISPLAY_STYLE_HEX32);
 
  circularBufferDel(cb);
 
@@ -249,15 +257,15 @@ void test_CircularBufferAdd_given_value_9_should_add_into_the_fourth_buffer(void
 
 
 
-void test_CircularBufferAdd_given_buffer_is_full_but_trying_to_add_should_throw_err(void)
+void test_CircularBufferAdd_given_buffer_is_full_but_trying_to_add_should_throw_ERR_BUFFER_IS_FULL(void)
 
 {
 
  unsigned int err;
 
- CircularBuffer *cb = circularBufferNew(4);
+ CircularBuffer *cb = circularBufferNew(5);
 
- int *temp = cb->buffer;
+
 
  { jmp_buf *PrevFrame, NewFrame; unsigned int MY_ID = (0); PrevFrame = CExceptionFrames[(0)].pFrame; CExceptionFrames[MY_ID].pFrame = (jmp_buf*)(&NewFrame); CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); if (_setjmp(NewFrame) == 0) { if (&PrevFrame)
 
@@ -273,13 +281,133 @@ void test_CircularBufferAdd_given_buffer_is_full_but_trying_to_add_should_throw_
 
   CircularBufferAdd(cb,10);
 
-  UnityFail( ("Expect exception to be generated"), (_U_UINT)140);;
+  CircularBufferAdd(cb,11);
+
+  UnityFail( ("Expect ERR_BUFFER_IS_FULL exception to be generated"), (_U_UINT)145);;
 
  }else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { err = CExceptionFrames[MY_ID].Exception; err=err; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A)){
 
-  UnityAssertEqualNumber((_U_SINT)((ERR_BUFFER_IS_FULL)), (_U_SINT)((err)), (((void *)0)), (_U_UINT)142, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((ERR_BUFFER_IS_FULL)), (_U_SINT)((err)), (((void *)0)), (_U_UINT)147, UNITY_DISPLAY_STYLE_INT);
 
-  printf("Caught an exception");
+  printf("Caught a ERR_BUFFER_IS_FULL exception! Error code is: %i" , err);
+
+ }
+
+ circularBufferDel(cb);
+
+}
+
+
+
+void test_circularBufferRemove_given_empty_buffer_should_throw_ERR_BUFFER_IS_EMPTY(void)
+
+{
+
+ unsigned int err;
+
+ CircularBuffer *cb = circularBufferNew(5);
+
+ int value_been_removed ;
+
+
+
+ { jmp_buf *PrevFrame, NewFrame; unsigned int MY_ID = (0); PrevFrame = CExceptionFrames[(0)].pFrame; CExceptionFrames[MY_ID].pFrame = (jmp_buf*)(&NewFrame); CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); if (_setjmp(NewFrame) == 0) { if (&PrevFrame)
+
+ {
+
+  value_been_removed = circularBufferRemove(cb);
+
+
+
+ }else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { err = CExceptionFrames[MY_ID].Exception; err=err; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A)){
+
+  UnityAssertEqualNumber((_U_SINT)((ERR_BUFFER_IS_EMPTY)), (_U_SINT)((err)), (((void *)0)), (_U_UINT)164, UNITY_DISPLAY_STYLE_INT);
+
+  printf("Caught a ERR_BUFFER_IS_EMPTY exception! Error code is: %i" , err);
+
+ }
+
+ circularBufferDel(cb);
+
+}
+
+
+
+void test_circularBufferRemove_given_13_should_return_13(void)
+
+{
+
+ unsigned int err;
+
+ CircularBuffer *cb = circularBufferNew(5);
+
+ int value_been_removed ;
+
+
+
+ { jmp_buf *PrevFrame, NewFrame; unsigned int MY_ID = (0); PrevFrame = CExceptionFrames[(0)].pFrame; CExceptionFrames[MY_ID].pFrame = (jmp_buf*)(&NewFrame); CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); if (_setjmp(NewFrame) == 0) { if (&PrevFrame)
+
+ {
+
+  CircularBufferAdd(cb,13);
+
+  value_been_removed = circularBufferRemove(cb);
+
+  UnityAssertEqualNumber((_U_SINT)((13)), (_U_SINT)((value_been_removed)), (((void *)0)), (_U_UINT)180, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((cb->size)), (((void *)0)), (_U_UINT)181, UNITY_DISPLAY_STYLE_INT);
+
+ }else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { err = CExceptionFrames[MY_ID].Exception; err=err; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A)){
+
+  UnityAssertEqualNumber((_U_SINT)((ERR_BUFFER_IS_EMPTY)), (_U_SINT)((err)), (((void *)0)), (_U_UINT)183, UNITY_DISPLAY_STYLE_INT);
+
+  printf("Caught a ERR_BUFFER_IS_EMPTY exception! Error code is: %i" , err);
+
+ }
+
+ circularBufferDel(cb);
+
+}
+
+
+
+
+
+void test_circularBufferRemove_given_33_7_should_return_33(void)
+
+{
+
+ unsigned int err;
+
+ CircularBuffer *cb = circularBufferNew(5);
+
+ int value_been_removed ;
+
+
+
+ { jmp_buf *PrevFrame, NewFrame; unsigned int MY_ID = (0); PrevFrame = CExceptionFrames[(0)].pFrame; CExceptionFrames[MY_ID].pFrame = (jmp_buf*)(&NewFrame); CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); if (_setjmp(NewFrame) == 0) { if (&PrevFrame)
+
+ {
+
+  CircularBufferAdd(cb,33);
+
+  CircularBufferAdd(cb,7);
+
+  value_been_removed = circularBufferRemove(cb);
+
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((cb->size)), (((void *)0)), (_U_UINT)201, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((33)), (_U_SINT)((value_been_removed)), (((void *)0)), (_U_UINT)202, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((7)), (_U_SINT)((*(cb->tail))), (((void *)0)), (_U_UINT)203, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((7)), (_U_SINT)((*(cb->head))), (((void *)0)), (_U_UINT)204, UNITY_DISPLAY_STYLE_INT);
+
+ }else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { err = CExceptionFrames[MY_ID].Exception; err=err; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A)){
+
+  UnityAssertEqualNumber((_U_SINT)((ERR_BUFFER_IS_EMPTY)), (_U_SINT)((err)), (((void *)0)), (_U_UINT)206, UNITY_DISPLAY_STYLE_INT);
+
+  printf("Caught a ERR_BUFFER_IS_EMPTY exception! Error code is: %i" , err);
 
  }
 

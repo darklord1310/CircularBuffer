@@ -15,6 +15,15 @@ void testing()
 					// if memory is not free, it will still be there forever
 }
 
+
+/*
+ * Delete the Stack object
+ *
+ *Input :
+ *					Stack is the stack object to delete
+ * Error checking:
+ *					will throw error if try to pop when the stack is empty
+ */
 CircularBuffer *circularBufferNew(int length)
 {
 	CircularBuffer *circularBuffer;
@@ -35,28 +44,41 @@ void circularBufferDel(CircularBuffer *circularBuffer)
 
 }
 
-
 /*  
  * Assume the buffer is always not empty
  */
 void CircularBufferAdd(CircularBuffer *cb, int valueToAdd)
 {
-	if ( ((cb->size)+1) > (cb->length)) // if the size is larger than the length of the buffer, then throw err
-	{
-	   Throw(ERR_BUFFER_IS_FULL);
-	}
+	if( cb->size == cb->length)
+		Throw(ERR_BUFFER_IS_FULL);
 	else
 	{
-	if( cb->size != 0)
-		(cb->tail)++;
-	*(cb->tail) = valueToAdd;
-
-	cb->size++;
-	cb->buffer++;
-	}
+		if( cb->size == 0)
+		{
+			*(cb->tail) = valueToAdd;
+			cb->size++;
+		}
+		else
+		{
+			cb->buffer++;
+			*(cb->buffer) = valueToAdd;
+			cb->head = cb->buffer;
+			cb->size++;
+		}
+	}	
 }
 
 int circularBufferRemove(CircularBuffer *cb)
 {
+	int removed_value;
 	
+	if( cb->size == 0)
+		Throw(ERR_BUFFER_IS_EMPTY);
+	else
+	{
+			removed_value = *(cb->tail);
+			cb->size--;
+			cb->tail++;
+	}
+	return removed_value;
 }

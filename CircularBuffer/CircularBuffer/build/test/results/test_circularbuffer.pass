@@ -4,29 +4,39 @@
   :file: test_circularbuffer.c
 :successes:
 - :test: test_circularBufferNew_given_6_should_allocate_CircularBuffer_object_with_a_buffer_of_6
-  :line: 14
+  :line: 15
   :message: ''
 - :test: test_CircularBufferAdd_given_value_6_should_add_into_the_first_buffer
   :line: 27
   :message: ''
-- :test: test_CircularBufferAdd_given_value_7_should_add_into_the_second_buffer
+- :test: test_CircularBufferAdd_given_6_7_should_get_7_6
   :line: 48
   :message: ''
-- :test: test_CircularBufferAdd_given_value_8_should_add_into_the_third_buffer
+- :test: test_CircularBufferAdd_given_6_7_8_should_get_8_7_6
   :line: 73
   :message: ''
-- :test: test_CircularBufferAdd_given_value_9_should_add_into_the_fourth_buffer
-  :line: 100
+- :test: test_CircularBufferAdd_given_value_6_7_8_9_should_get_9_8_7_6
+  :line: 102
   :message: ''
-- :test: test_CircularBufferAdd_given_buffer_is_full_but_trying_to_add_should_throw_err
-  :line: 128
+- :test: test_CircularBufferAdd_given_buffer_is_full_but_trying_to_add_should_throw_ERR_BUFFER_IS_FULL
+  :line: 132
+  :message: ''
+- :test: test_circularBufferRemove_given_empty_buffer_should_throw_ERR_BUFFER_IS_EMPTY
+  :line: 153
+  :message: ''
+- :test: test_circularBufferRemove_given_13_should_return_13
+  :line: 170
+  :message: ''
+- :test: test_circularBufferRemove_given_33_7_should_return_33
+  :line: 190
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 6
-  :passed: 6
+  :total: 9
+  :passed: 9
   :failed: 0
   :ignored: 0
 :stdout:
-- Caught an exception
+- 'Caught a ERR_BUFFER_IS_FULL exception! Error code is: 1'
+- 'Caught a ERR_BUFFER_IS_EMPTY exception! Error code is: 2'
