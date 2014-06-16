@@ -208,3 +208,38 @@ void test_circularBufferRemove_given_33_7_should_return_33(void)
 	}
 	circularBufferDel(cb);
 }
+
+void test_circularBufferRemove_given_3_4_5_remove_twice_should_get_5(void)
+{
+		int value_been_removed ;
+		
+		CircularBuffer *cb = circularBufferNew(length_of_buffer);
+		CircularBufferAdd(cb,3);
+		CircularBufferAdd(cb,4);
+		CircularBufferAdd(cb,5);
+		value_been_removed = circularBufferRemove(cb);
+		TEST_ASSERT_EQUAL(3, value_been_removed);
+		value_been_removed = circularBufferRemove(cb);
+		TEST_ASSERT_EQUAL(4, value_been_removed);
+		TEST_ASSERT_EQUAL(1, cb->size);
+		TEST_ASSERT_EQUAL(5, *(cb->tail) );
+		TEST_ASSERT_EQUAL(5, *(cb->head) );
+}
+
+void test_circularBuffer_add_3_4_into_buffer_then_remove_tail_and_add_5_6_then_remove_tail_should_get_head_is_6_and_tail_is_5(void)
+{
+		int value_been_removed ;
+		
+		CircularBuffer *cb = circularBufferNew(length_of_buffer);
+		CircularBufferAdd(cb,3);
+		CircularBufferAdd(cb,4);
+		value_been_removed = circularBufferRemove(cb);
+		TEST_ASSERT_EQUAL(3, value_been_removed);
+		CircularBufferAdd(cb,5);
+		CircularBufferAdd(cb,6);
+		value_been_removed = circularBufferRemove(cb);
+		TEST_ASSERT_EQUAL(4, value_been_removed);
+		TEST_ASSERT_EQUAL(2, cb->size);
+		TEST_ASSERT_EQUAL(5, *(cb->tail) );
+		TEST_ASSERT_EQUAL(6, *(cb->head) );
+}

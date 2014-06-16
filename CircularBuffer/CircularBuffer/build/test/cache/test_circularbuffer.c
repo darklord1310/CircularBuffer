@@ -414,3 +414,73 @@ void test_circularBufferRemove_given_33_7_should_return_33(void)
  circularBufferDel(cb);
 
 }
+
+
+
+void test_circularBufferRemove_given_3_4_5_remove_twice_should_get_5(void)
+
+{
+
+  int value_been_removed ;
+
+
+
+  CircularBuffer *cb = circularBufferNew(5);
+
+  CircularBufferAdd(cb,3);
+
+  CircularBufferAdd(cb,4);
+
+  CircularBufferAdd(cb,5);
+
+  value_been_removed = circularBufferRemove(cb);
+
+  UnityAssertEqualNumber((_U_SINT)((3)), (_U_SINT)((value_been_removed)), (((void *)0)), (_U_UINT)221, UNITY_DISPLAY_STYLE_INT);
+
+  value_been_removed = circularBufferRemove(cb);
+
+  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((value_been_removed)), (((void *)0)), (_U_UINT)223, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((cb->size)), (((void *)0)), (_U_UINT)224, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((*(cb->tail))), (((void *)0)), (_U_UINT)225, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((*(cb->head))), (((void *)0)), (_U_UINT)226, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+void test_circularBuffer_add_3_4_into_buffer_then_remove_tail_and_add_5_6_then_remove_tail_should_get_head_is_6_and_tail_is_5(void)
+
+{
+
+  int value_been_removed ;
+
+
+
+  CircularBuffer *cb = circularBufferNew(5);
+
+  CircularBufferAdd(cb,3);
+
+  CircularBufferAdd(cb,4);
+
+  value_been_removed = circularBufferRemove(cb);
+
+  UnityAssertEqualNumber((_U_SINT)((3)), (_U_SINT)((value_been_removed)), (((void *)0)), (_U_UINT)237, UNITY_DISPLAY_STYLE_INT);
+
+  CircularBufferAdd(cb,5);
+
+  CircularBufferAdd(cb,6);
+
+  value_been_removed = circularBufferRemove(cb);
+
+  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((value_been_removed)), (((void *)0)), (_U_UINT)241, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((cb->size)), (((void *)0)), (_U_UINT)242, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((*(cb->tail))), (((void *)0)), (_U_UINT)243, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((6)), (_U_SINT)((*(cb->head))), (((void *)0)), (_U_UINT)244, UNITY_DISPLAY_STYLE_INT);
+
+}

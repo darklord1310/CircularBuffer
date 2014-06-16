@@ -16,13 +16,12 @@ void testing()
 }
 
 
+
 /*
- * Delete the Stack object
+ * Initialize the circularbuffer
  *
  *Input :
- *					Stack is the stack object to delete
- * Error checking:
- *					will throw error if try to pop when the stack is empty
+ *					length is the length of the buffer
  */
 CircularBuffer *circularBufferNew(int length)
 {
@@ -35,32 +34,42 @@ CircularBuffer *circularBufferNew(int length)
 	circularBuffer->head = circularBuffer->buffer;
 	circularBuffer->tail = circularBuffer->buffer;
 	return circularBuffer;
-	
 }
 
+
+/*
+ *	To free the buffer memory
+ */
 void circularBufferDel(CircularBuffer *circularBuffer)
 {
 	free(circularBuffer);
 
 }
 
-/*  
- * Assume the buffer is always not empty
+
+/*
+ * Add a new value into the circular buffer
+ *
+ *Input :
+ *					Pointer cb is the pointer which pointed to the CircularBuffer structure
+ *					valueToAdd is the value to be added into the CircularBuffer
+ * Error checking:
+ *					will throw error when trying to add if the circular buffer is full
  */
 void CircularBufferAdd(CircularBuffer *cb, int valueToAdd)
 {
-	if( cb->size == cb->length)
+	if( cb->size == cb->length)    // If size equals to length means buffer is full
 		Throw(ERR_BUFFER_IS_FULL);
 	else
 	{
-		if( cb->size == 0)
-		{
+		if( cb->size == 0)				// if size=0 means the first value to be added, hence point to tail
+		{								
 			*(cb->tail) = valueToAdd;
 			cb->size++;
 		}
 		else
 		{
-			cb->buffer++;
+			cb->buffer++;				//  if not the first value in the circularbuffer, then point head to it
 			*(cb->buffer) = valueToAdd;
 			cb->head = cb->buffer;
 			cb->size++;
@@ -68,15 +77,29 @@ void CircularBufferAdd(CircularBuffer *cb, int valueToAdd)
 	}	
 }
 
+
+
+/*
+ * Remove the tail in circular buffer 
+ *
+ *Input :
+ *					Pointer cb is the pointer which pointed to the CircularBuffer structure
+ *	
+ *Return :
+ *					The value that stored in the tail in circularBuffer
+ *
+ * Error checking:
+ *					will throw error when trying to remove if the circular buffer is empty
+ */
 int circularBufferRemove(CircularBuffer *cb)
 {
 	int removed_value;
 	
-	if( cb->size == 0)
+	if( cb->size == 0)              // Check whether the circularbuffer is empty or not
 		Throw(ERR_BUFFER_IS_EMPTY);
 	else
 	{
-			removed_value = *(cb->tail);
+			removed_value = *(cb->tail);  // put the value in the pointer to variable removed_value, then decrement the size and increase the address of tail
 			cb->size--;
 			cb->tail++;
 	}

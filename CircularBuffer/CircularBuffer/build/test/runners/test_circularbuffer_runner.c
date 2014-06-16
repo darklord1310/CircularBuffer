@@ -43,6 +43,8 @@ extern void test_CircularBufferAdd_given_buffer_is_full_but_trying_to_add_should
 extern void test_circularBufferRemove_given_empty_buffer_should_throw_ERR_BUFFER_IS_EMPTY(void);
 extern void test_circularBufferRemove_given_13_should_return_13(void);
 extern void test_circularBufferRemove_given_33_7_should_return_33(void);
+extern void test_circularBufferRemove_given_3_4_5_remove_twice_should_get_5(void);
+extern void test_circularBuffer_add_3_4_into_buffer_then_remove_tail_and_add_5_6_then_remove_tail_should_get_head_is_6_and_tail_is_5(void);
 
 
 //=======Test Reset Option=====
@@ -67,6 +69,8 @@ int main(void)
   RUN_TEST(test_circularBufferRemove_given_empty_buffer_should_throw_ERR_BUFFER_IS_EMPTY, 153);
   RUN_TEST(test_circularBufferRemove_given_13_should_return_13, 170);
   RUN_TEST(test_circularBufferRemove_given_33_7_should_return_33, 190);
+  RUN_TEST(test_circularBufferRemove_given_3_4_5_remove_twice_should_get_5, 212);
+  RUN_TEST(test_circularBuffer_add_3_4_into_buffer_then_remove_tail_and_add_5_6_then_remove_tail_should_get_head_is_6_and_tail_is_5, 229);
 
   return (UnityEnd());
 }

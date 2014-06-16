@@ -30,11 +30,17 @@
 - :test: test_circularBufferRemove_given_33_7_should_return_33
   :line: 190
   :message: ''
+- :test: test_circularBufferRemove_given_3_4_5_remove_twice_should_get_5
+  :line: 212
+  :message: ''
+- :test: test_circularBuffer_add_3_4_into_buffer_then_remove_tail_and_add_5_6_then_remove_tail_should_get_head_is_6_and_tail_is_5
+  :line: 229
+  :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 9
-  :passed: 9
+  :total: 11
+  :passed: 11
   :failed: 0
   :ignored: 0
 :stdout:
